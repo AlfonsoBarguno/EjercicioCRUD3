@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<th:block th:insert="Fragments/head :: head"></th:block>
+</head>
+<body>
+	<div class="container">
+		<div th:insert="Fragments/BodyHeader :: div"></div>
+
+
+
+		<h3>Consulta</h3>
+		<form th:object="${DATA_SucursalesDtoFormulario}" method="get"
+			th:action="@{/ListaSucursales}">
+
+			<input type="hidden" th:field="*{pk_SucursalId}">
+
+			<div class="form-group">
+
+				<label class="cloud-label">Nombre</label> <input type="text"
+					th:field="*{nomSucursal}" disabled> <br> <label
+					class="cloud-label">Pais</label> <input type="text"
+					th:field="*{paisSucursal}" disabled> <br> <label
+					class="cloud-label">Tipo</label> <input type="text"
+					th:field="*{tipusSucursal}" disabled>
+			</div>
+			<button type="submit" class="btn btn-outline-dark">Volver</button>
+
+		</form>
+
+
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<th:block th:insert="Fragments/head :: head"></th:block>
+</head>
+<body>
+	<div class="container">
+		<div th:insert="Fragments/BodyHeader :: div"></div>
+
+
+		<div class="cloud-table-scroll">
+
+			<table class="table table-stripped ">
+				<thead>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Pais</th>
+					<th>Tipo</th>
+				
+					<th colspan="3"></th>
+				</thead>
+				<tbody>
+					<tr th:each="sucursalDto: ${DATA_SucursalesDtoLista}">
+						<td th:text="${sucursalDto.pk_SucursalId}"></td>
+						<td th:text="${sucursalDto.nomSucursal}"></td>
+						<td th:text="${sucursalDto.paisSucursal}"></td>
+						<td th:text="${sucursalDto.tipusSucursal}"></td>
+						
+						<td><a class="btn btn-outline-info"
+							th:href="@{/ConsultaSucursal/__${sucursalDto.pk_SucursalId}__}"
+							role="button">Ver detalles</a></td>
+						<td><a class="btn btn-outline-warning"
+							th:href="@{/ModificaSucursal/__${sucursalDto.pk_SucursalId}__}" role="button">Editar</a></td>
+
+						<td><a class="btn btn-outline-danger"
+							th:href="@{/EliminaSucursal/__${sucursalDto.pk_SucursalId}__}"
+							role="button"
+							onclick="return confirm('Confirme que quiere eliminar esta sucursal')">Eliminar</a></td>
+					</tr>
+				</tbody>
+
+
+
+			</table>
+		</div>
+
+		<br> <a class="btn btn-outline-primary" th:href="@{/NuevaSucursal}"
+			role="Button">Agregar Sucursal</a>
+
+	</div>
+
+</body>
+</html>
